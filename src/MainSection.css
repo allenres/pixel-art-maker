@@ -25,3 +25,19 @@ h1 {
 .colorPicker button:hover {
     cursor: pointer;
 }
+
+.grid-container {
+  display: grid;
+  /* Creates 16 equal columns */
+  grid-template-columns: repeat(16, 1fr); 
+  /* Sets the total size of your grid */
+  width: 400px;
+  height: 400px;
+  border: 1px solid #000;
+}
+
+.grid-item {
+  border: 1px solid #ccc;
+  /* Ensures square cells if width/height of container is equal */
+  aspect-ratio: 1 / 1; 
+}
