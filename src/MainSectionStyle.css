@@ -1,0 +1,14 @@
+h1 {
+    margin: 1rem;
+}
+.container {
+    display: flex;
+}
+
+.colorPicker {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: aliceblue;
+    margin: 1rem;
+}

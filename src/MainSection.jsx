@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import "./MainSectionstyle.css";
+import "./MainSectionStyle.css";
 
 export default function MainSection() {
     // const [color, setColor] = useState("#000");
@@ -7,7 +7,7 @@ export default function MainSection() {
     return (
         <>
             <h1>Pixel Art Editor</h1>
-            <div>
+            <div className="container">
                 <div className="colorPicker">
                     <h3>COLOR</h3>
                     <input type="color" />
@@ -15,7 +15,7 @@ export default function MainSection() {
                     <button>Clear</button>
                     <p>Click any cell to paint it with the current color.</p>
                 </div>
-                <div className="graph"></div>
+                <div className="grid">input</div>
             </div>
         </>
     )
