@@ -1,0 +1,13 @@
+nav {
+    padding: 20px;
+    background-color: red;
+}
+nav > ul {
+    margin: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav > ul > li {
+    list-style: none;
+}

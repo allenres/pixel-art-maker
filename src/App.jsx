@@ -1,11 +1,13 @@
 import './App.css'
-import Count from './Name.jsx'
+import Name from './Name.jsx'
+import NavBar from './NavBar.jsx'
 
 function App() {
 
   return (
     <>
-      <Count />
+      <NavBar />
+      <Name />
     </>
   )
 }
