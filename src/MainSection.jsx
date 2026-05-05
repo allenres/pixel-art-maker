@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import "./MainSectionStyle.css";
+import "./MainSection.css";
 import ColorPicker from "./ColorPicker";
 import "./MainSection.css";
 
