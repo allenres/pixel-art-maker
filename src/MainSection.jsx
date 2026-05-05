@@ -11,7 +11,23 @@ export default function MainSection() {
                 <div className="colorPicker">
                     <h3>COLOR</h3>
                     <input type="color" />
-                    <input type="radio" />
+                    <fieldset>
+                        <div>
+                            <input type="radio" name="color" value="Red" />
+                            <input type="radio" name="color" value="Orange" />
+                            <input type="radio" name="color" value="Yellow" />
+                            <input type="radio" name="color" value="Green" />
+                            <input type="radio" name="color" value="Blue" />
+                        </div>
+                        <div>
+                            <input type="radio" name="color" value="purple" />
+                            <input type="radio" name="color" value="pink" />
+                            <input type="radio" name="color" value="black" />
+                            <input type="radio" name="color" value="other" />
+                            <input type="radio" name="color" value="other" />
+                        </div>
+                    </fieldset>
+                    
                     <button>Clear</button>
                     <p>Click any cell to paint it with the current color.</p>
                 </div>
