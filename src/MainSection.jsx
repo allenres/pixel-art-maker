@@ -1,8 +1,12 @@
 // import { useState } from "react";
 import "./MainSectionStyle.css";
 import ColorPicker from "./ColorPicker";
+import "./MainSection.css";
+
+
 export default function MainSection() {
     // const [color, setColor] = useState("#000");
+    const cells = Array.from({ length: 256 });
 
     return (
         <>
@@ -18,7 +22,13 @@ export default function MainSection() {
                     <button>Clear</button>
                     <p>Click any cell to paint it with the current color.</p>
                 </div>
-                <div className="grid">input</div>
+                <div className="grid-container">
+                {cells.map((_, index) => (
+                    <div key={index} className="grid-item">
+                    {/* Optional content here */}
+                    </div>
+                ))}
+                </div>
             </div>
         </>
     )
