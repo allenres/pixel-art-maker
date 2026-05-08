@@ -52,6 +52,7 @@ export default function MainSection() {
             <div className="container">
                 <div className="colorPicker">
                     <h3>COLOR</h3>
+                    <button id="eraser" onClick={() => setColor("#FFF")}>ERASER</button>
                     <input 
                         type="color" 
                         value={color}

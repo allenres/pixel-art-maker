@@ -2,6 +2,13 @@ h1 {
     margin: 1rem;
     margin-top: 2rem;
 }
+
+#eraser {
+    margin-bottom: 1rem;
+    background-color: rgb(255, 213, 213);
+    color: black;
+}
+
 .container {
     display: flex;
 }
@@ -47,13 +54,17 @@ h1 {
     width: 50px;
 }
 
-
 .color-box{
     background-color: grey;
 }
+
 .default-colors{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 10px;
+}
+
+.colorPicker button {
+    margin-top: 1rem;
 }
 
