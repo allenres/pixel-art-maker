@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import "./MainSection.css";
 import {useState} from 'react'
-import squares from './squares.js'
+import defaultColors from './defaultColors.js'
 
 export default function MainSection() {
     // const [color, setColor] = useState("#000");
@@ -17,10 +17,11 @@ export default function MainSection() {
     function createGrid(){
         return cells;
     }
+
     const [grid, setGrid] = useState(createGrid)
     const [color, setColor] = useState(DEFAULT_COLOR);
 
-    const boxes = squares.map((el, index) => (<button 
+    const colorChoices = defaultColors.map((el, index) => (<button 
         key={index} 
         className='color-box'
         style={{
@@ -40,11 +41,11 @@ export default function MainSection() {
             newGrid[row][col] = color
             setGrid(newGrid)
         }
-        
+
         // alert("color changed:"+ color)
     }
 
-    console.log(color)
+    // console.log(color)
     return (
         <>
             <h1>Pixel Art Editor</h1>
@@ -52,12 +53,12 @@ export default function MainSection() {
                 <div className="colorPicker">
                     <h3>COLOR</h3>
                     <input 
-                    type="color" 
-                    value={color}
-                    onChange={(e) => setColor(e.target.value)}
+                        type="color" 
+                        value={color}
+                        onChange={(e) => setColor(e.target.value)}
                     />
-                    <div className='box-container'>
-                        {boxes}
+                    <div className='default-colors'>
+                        {colorChoices}
                     </div>
                
                     <button onClick={clearBoard}>Clear</button>

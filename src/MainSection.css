@@ -51,7 +51,7 @@ h1 {
 .color-box{
     background-color: grey;
 }
-.box-container{
+.default-colors{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 10px;
