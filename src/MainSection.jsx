@@ -11,7 +11,7 @@ export default function MainSection() {
     const cells = Array.from({ length: 16 }, () => Array(GRID_SIZE).fill(DEFAULT_COLOR));
 
     function clearBoard() {
-        setGrid(createGrid)
+        setGrid(createGrid);
     }
 
     function createGrid() {
@@ -29,6 +29,23 @@ export default function MainSection() {
 
     window.addEventListener('mouseup', () => setPainting(false));
 
+    function exportPng() {
+        const EXPORT_SCALE = 16 * 16;
+        const canvas = document.createElement('canvas')
+        canvas.width = GRID_SIZE * EXPORT_SCALE
+        canvas.height = GRID_SIZE * EXPORT_SCALE
+        const ctx = canvas.getContext('2d')
+        for (let r = 0; r < GRID_SIZE; r++) {
+            for (let c = 0; c < GRID_SIZE; c++) {
+                ctx.fillStyle = grid[r][c]
+                ctx.fillRect(c * EXPORT_SCALE, r * EXPORT_SCALE, EXPORT_SCALE, EXPORT_SCALE)
+            }
+        }
+        const link = document.createElement('a')
+        link.download = 'pixel-art.png'
+        link.href = canvas.toDataURL('image/png')
+        link.click()
+    }
 
     const colorChoices = defaultColors.map((el, index) => (<button
         key={index}
@@ -72,6 +89,7 @@ export default function MainSection() {
                     </div>
 
                     <button onClick={clearBoard}>Clear</button>
+                    <button onClick={exportPng}>Export</button>
                     <p>Click any cell to paint it with the current color.</p>
                 </div>
                 <div className="grid-container">
@@ -81,7 +99,7 @@ export default function MainSection() {
                                 <button
                                     key={`${r}-${c}`}
                                     onClick={() => changeColor(r, c)}
-                                    onMouseEnter = {() => dragPaint(r,c)}
+                                    onMouseEnter={() => dragPaint(r, c)}
                                     onMouseDown={() => setPainting(true)}
                                     style={{
                                         backgroundColor: col
