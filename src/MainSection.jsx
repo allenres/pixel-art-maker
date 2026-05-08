@@ -10,8 +10,9 @@ export default function MainSection() {
 
     const cells = Array.from({ length: 16 }, () => Array(GRID_SIZE).fill(DEFAULT_COLOR));
    
-
-    
+    function clearBoard(){
+        setGrid(createGrid)
+    }
 
     function createGrid(){
         return cells;
@@ -52,7 +53,7 @@ export default function MainSection() {
                         {boxes}
                     </div>
                
-                    <button>Clear</button>
+                    <button onClick={clearBoard}>Clear</button>
                     <p>Click any cell to paint it with the current color.</p>
                 </div>
                 <div className="grid-container">
