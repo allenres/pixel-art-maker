@@ -6,7 +6,7 @@ import squares from './squares.js'
 export default function MainSection() {
     // const [color, setColor] = useState("#000");
     const GRID_SIZE = 16
-    const DEFAULT_COLOR = "#000000"
+    const DEFAULT_COLOR = "#FFFFFF"
 
     const cells = Array.from({ length: 16 }, () => Array(GRID_SIZE).fill(DEFAULT_COLOR));
    
