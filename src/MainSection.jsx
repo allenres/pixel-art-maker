@@ -1,6 +1,6 @@
 // import { useState } from "react";
 import "./MainSection.css";
-import {useState} from 'react'
+import { useState } from 'react'
 import defaultColors from './defaultColors.js'
 
 export default function MainSection() {
@@ -9,20 +9,29 @@ export default function MainSection() {
     const DEFAULT_COLOR = "#FFFFFF"
 
     const cells = Array.from({ length: 16 }, () => Array(GRID_SIZE).fill(DEFAULT_COLOR));
-   
-    function clearBoard(){
+
+    function clearBoard() {
         setGrid(createGrid)
     }
 
-    function createGrid(){
+    function createGrid() {
         return cells;
     }
 
     const [grid, setGrid] = useState(createGrid)
     const [color, setColor] = useState(DEFAULT_COLOR);
+    const [painting, setPainting] = useState(false);
 
-    const colorChoices = defaultColors.map((el, index) => (<button 
-        key={index} 
+    function dragPaint(r, c) {
+        if (!painting) return;
+        changeColor(r, c);
+    }
+
+    window.addEventListener('mouseup', () => setPainting(false));
+
+
+    const colorChoices = defaultColors.map((el, index) => (<button
+        key={index}
         className='color-box'
         style={{
             backgroundColor: el.color
@@ -31,8 +40,8 @@ export default function MainSection() {
     >
     </button>))
 
-    function changeColor(row, col){
-        if(grid[row][col] === color){
+    function changeColor(row, col) {
+        if (grid[row][col] === color) {
             const newGrid = grid.map(el => el.slice())
             newGrid[row][col] = DEFAULT_COLOR
             setGrid(newGrid)
@@ -53,33 +62,35 @@ export default function MainSection() {
                 <div className="colorPicker">
                     <h3>COLOR</h3>
                     <button id="eraser" onClick={() => setColor("#FFF")}>ERASER</button>
-                    <input 
-                        type="color" 
+                    <input
+                        type="color"
                         value={color}
                         onChange={(e) => setColor(e.target.value)}
                     />
                     <div className='default-colors'>
                         {colorChoices}
                     </div>
-               
+
                     <button onClick={clearBoard}>Clear</button>
                     <p>Click any cell to paint it with the current color.</p>
                 </div>
                 <div className="grid-container">
-                {
-                    grid.map((row, r) => 
-                        row.map((col, c) => (
-                            <button 
-                                key={`${r}-${c}`}
-                                onClick={() => changeColor(r, c)}                             
-                                style={{
-                                    backgroundColor: col
-                                }}
-                            >
-                            </button>
-                        )
-                    ))
-                }
+                    {
+                        grid.map((row, r) =>
+                            row.map((col, c) => (
+                                <button
+                                    key={`${r}-${c}`}
+                                    onClick={() => changeColor(r, c)}
+                                    onMouseEnter = {() => dragPaint(r,c)}
+                                    onMouseDown={() => setPainting(true)}
+                                    style={{
+                                        backgroundColor: col
+                                    }}
+                                >
+                                </button>
+                            )
+                            ))
+                    }
                 </div>
             </div>
         </>
