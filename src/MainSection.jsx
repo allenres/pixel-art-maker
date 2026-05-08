@@ -29,6 +29,13 @@ export default function MainSection() {
     >
     </button>))
 
+    function changeColor(row, col){
+        const newGrid = grid.map(el => el.slice())
+        newGrid[row][col] = color
+        setGrid(newGrid)
+        // alert("color changed:"+ color)
+    }
+
     console.log(color)
     return (
         <>
@@ -36,7 +43,11 @@ export default function MainSection() {
             <div className="container">
                 <div className="colorPicker">
                     <h3>COLOR</h3>
-                    <input type="color" />
+                    <input 
+                    type="color" 
+                    value={color}
+                    onChange={(e) => setColor(e.target.value)}
+                    />
                     <div className='box-container'>
                         {boxes}
                     </div>
@@ -48,7 +59,14 @@ export default function MainSection() {
                 {
                     grid.map((row, r) => 
                         row.map((col, c) => (
-                            <button>
+                            <button 
+                                key={`${r}-${c}`}
+                                onClick={() => changeColor(r, c)}                             
+                                style={{
+                                    backgroundColor: col
+                                }}
+                            >
+
                             </button>
                         )
                     ))
