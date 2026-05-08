@@ -1,21 +1,35 @@
 // import { useState } from "react";
 import "./MainSection.css";
-import ColorPicker from "./ColorPicker";
 import {useState} from 'react'
 import squares from './squares.js'
 
 export default function MainSection() {
     // const [color, setColor] = useState("#000");
-    const cells = Array.from({ length: 256 });
-    const [color, setColor] = useState("#FFFFFF");
+    const GRID_SIZE = 16
+    const DEFAULT_COLOR = "#FFFFFF"
+
+    const cells = Array.from({ length: 16 }, () => Array(GRID_SIZE).fill(DEFAULT_COLOR));
+   
+
     
-     const boxes = squares.map((el, index) => (<button 
+
+    function createGrid(){
+        return cells;
+    }
+    const [grid, setGrid] = useState(createGrid)
+    const [color, setColor] = useState(DEFAULT_COLOR);
+
+    const boxes = squares.map((el, index) => (<button 
         key={index} 
         className='color-box'
-        style={{backgroundColor: el.color}}
+        style={{
+            backgroundColor: el.color
+        }}
         onClick={() => setColor(el.color)}
-        >
-        </button>))
+    >
+    </button>))
+
+    console.log(color)
     return (
         <>
             <h1>Pixel Art Editor</h1>
@@ -31,11 +45,14 @@ export default function MainSection() {
                     <p>Click any cell to paint it with the current color.</p>
                 </div>
                 <div className="grid-container">
-                {cells.map((_, index) => (
-                    <div key={index} className="grid-item">
-                    {/* Optional content here */}
-                    </div>
-                ))}
+                {
+                    grid.map((row, r) => 
+                        row.map((col, c) => (
+                            <button>
+                            </button>
+                        )
+                    ))
+                }
                 </div>
             </div>
         </>
