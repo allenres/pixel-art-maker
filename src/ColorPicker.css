@@ -1,7 +1,0 @@
-.color-box{
-    background-color: grey;
-}
-.box-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-}

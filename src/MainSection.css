@@ -41,3 +41,18 @@ h1 {
   /* Ensures square cells if width/height of container is equal */
   aspect-ratio: 1 / 1; 
 }
+
+.color-box{
+    height: 50px;
+    width: 50px;
+}
+
+
+.color-box{
+    background-color: grey;
+}
+.box-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+}
