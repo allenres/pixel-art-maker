@@ -31,9 +31,16 @@ export default function MainSection() {
     </button>))
 
     function changeColor(row, col){
-        const newGrid = grid.map(el => el.slice())
-        newGrid[row][col] = color
-        setGrid(newGrid)
+        if(grid[row][col] === color){
+            const newGrid = grid.map(el => el.slice())
+            newGrid[row][col] = DEFAULT_COLOR
+            setGrid(newGrid)
+        } else {
+            const newGrid = grid.map(el => el.slice())
+            newGrid[row][col] = color
+            setGrid(newGrid)
+        }
+        
         // alert("color changed:"+ color)
     }
 
@@ -67,7 +74,6 @@ export default function MainSection() {
                                     backgroundColor: col
                                 }}
                             >
-
                             </button>
                         )
                     ))
